@@ -17,3 +17,17 @@ pnpm expo install
 ```shell
 pnpm start
 ```
+
+# Hook
+
+# Database
+- https://orm.drizzle.team/docs/get-started/expo-new
+
+```shell
+pnpm migration:generate
+```
+
+
+# API
+
+# Firebase
