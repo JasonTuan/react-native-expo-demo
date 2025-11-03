@@ -8,6 +8,5 @@ export async function createUser(name: string, email: string, age?: number) {
 
 // select all
 export async function getUsers() {
-    const rows = await DB.select().from(usersTable).all();
-    return rows;
+    return DB.select().from(usersTable).all();
 }
