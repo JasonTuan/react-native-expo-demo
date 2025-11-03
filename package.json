@@ -10,7 +10,7 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "migration:generate": "npx drizzle-kit generate",
-    "migration:push": "npx drizzle-kit push --schema=./db/schema.ts --driver sqlite"
+    "migration:push": "npx drizzle-kit push"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
@@ -20,6 +20,7 @@
     "drizzle-orm": "^0.44.7",
     "expo": "~54.0.21",
     "expo-constants": "~18.0.10",
+    "expo-dev-client": "~6.0.16",
     "expo-drizzle-studio-plugin": "^0.2.1",
     "expo-font": "~14.0.9",
     "expo-haptics": "~15.0.7",

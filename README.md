@@ -18,6 +18,18 @@ pnpm expo install
 pnpm start
 ```
 
+## Build
+https://docs.expo.dev/develop/development-builds/create-a-build/#build-on-eas
+```shell
+npm install -g eas-cli
+eas build
+eas build --platform android
+eas build --platform ios
+
+pnpm expo install expo-dev-client
+eas build --profile development
+```
+
 # Hook
 
 # Database
@@ -27,7 +39,11 @@ pnpm start
 pnpm migration:generate
 ```
 
-
 # API
 
 # Firebase
+
+# Check
+```shell
+expo doctor
+```

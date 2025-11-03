@@ -20,7 +20,7 @@ export default function HomeScreen() {
                 />
             }>
             <ThemedView style={styles.titleContainer}>
-                <ThemedText type="title">User Table - Records</ThemedText>
+                <ThemedText type="title">Users</ThemedText>
             </ThemedView>
             <ThemedView style={styles.stepContainer}>
                 {(!error && users) && users.map((user) => (
