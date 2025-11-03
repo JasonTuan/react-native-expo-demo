@@ -3,31 +3,12 @@ import {StyleSheet} from 'react-native'
 import ParallaxScrollView from '@/components/parallax-scroll-view'
 import {ThemedText} from '@/components/themed-text'
 import {ThemedView} from '@/components/themed-view'
-import {getUsers} from "@/db/queries"
-import {useEffect, useState} from "react";
-import {User} from "@/db/schema";
+import {usersTable} from "@/db/schema";
 import {DB} from "@/db/DB";
+import {useLiveQuery} from "drizzle-orm/expo-sqlite";
 
 export default function HomeScreen() {
-    const [allUsers, setAllUsers] = useState<User[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    const fetchUsers = async () => {
-        try {
-            setLoading(true);
-            const result = await getUsers();
-            setAllUsers(result);
-        } catch (error) {
-            console.error("Error can not to gets users:", error);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    useEffect(() => {
-        // Thêm dữ liệu mẫu và fetch
-        fetchUsers();
-    }, []);
+    const {data: users, error, updatedAt} = useLiveQuery(DB.select().from(usersTable));
 
     return (
         <ParallaxScrollView
@@ -42,13 +23,12 @@ export default function HomeScreen() {
                 <ThemedText type="title">User Table - Records</ThemedText>
             </ThemedView>
             <ThemedView style={styles.stepContainer}>
-                {(!loading && allUsers) && allUsers.map((user) => (
+                {(!error && users) && users.map((user) => (
                     <ThemedText key={user.id}>
-                        { `${user.id} - ${user.name} <${user.email}>` }
+                        {`${user.id} - ${user.name} <${user.email}>`}
                     </ThemedText>
                 ))}
             </ThemedView>
-
         </ParallaxScrollView>
     );
 }
